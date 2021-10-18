@@ -1,0 +1,10 @@
+Package: lmmaov
+Type: Package
+Title: What the Package Does (Title Case)
+Version: 0.1.0
+Author: Josh Price
+Maintainer: Josh Price <jprice5@utk.edu>
+Description: Linear mixed models with R-side covariance structures
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
