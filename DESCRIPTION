@@ -8,3 +8,22 @@ Description: Linear mixed models with R-side covariance structures
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
+Depends: 
+    dplyr,
+    ggplot2,
+    R (>= 2.10)
+RoxygenNote: 7.1.1
+Imports: 
+    fBasics,
+    DescTools,
+    energy,
+    gridExtra,
+    grDevices,
+    qqplotr,
+    pander,
+    ggplotify,
+    car,
+    ggformula,
+    cowplot
+Suggests: 
+    gdtools
