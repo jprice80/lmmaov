@@ -33,3 +33,11 @@ round_list <- function(object, digits=4) {
   return(object)
 }
 
+#====================================== Data Classes ===================================================
+
+dataClasses <- function(model){
+  temp <- attr(model$modelInfo$terms$cond$fixed, "dataClasses")
+  out <- data.frame(terms=names(temp), class=as.vector(temp))
+  return(out)
+}
+

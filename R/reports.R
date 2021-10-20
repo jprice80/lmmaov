@@ -62,12 +62,11 @@ report<-function(object, style="multiline", plots=FALSE, round=4, ...){
 #' @param style a pandoc table style: \code{simple, multiline, grid, or rmarkdown}.
 #' @param plots plots a TRUE/FALSE boolean value indicating whether or not to perform include plots in the report.
 #' @param round the number of digits to round too when producing the report.
-#' @param ... additional itemes to be passed to \code{\link{Pandoc}} for processing.
+#' @param ... additional items to be passed to \code{\link{Pandoc}} for processing.
 #'
 #' @return a printed pander tables and optional figures.
 #' @export
 #'
-#' @examples
 combine.report<-function(objects, style="multiline", plots=FALSE, round=4, ...){
 
   if(class(objects) != "list"){

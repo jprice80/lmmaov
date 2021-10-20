@@ -10,7 +10,9 @@ Encoding: UTF-8
 LazyData: true
 Depends: 
     dplyr,
+    effects,
     ggplot2,
+    glmmTMB,
     R (>= 2.10)
 RoxygenNote: 7.1.1
 Imports: 
@@ -24,6 +26,7 @@ Imports:
     ggplotify,
     car,
     ggformula,
-    cowplot
+    cowplot,
+    emmeans
 Suggests: 
     gdtools

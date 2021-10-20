@@ -15,7 +15,7 @@ combine.report(objects, style = "multiline", plots = FALSE, round = 4, ...)
 
 \item{round}{the number of digits to round too when producing the report.}
 
-\item{...}{additional itemes to be passed to \code{\link{Pandoc}} for processing.}
+\item{...}{additional items to be passed to \code{\link{Pandoc}} for processing.}
 }
 \value{
 a printed pander tables and optional figures.

@@ -22,6 +22,10 @@ summary.lmm<-function(object, plots=FALSE){
 
     summary_eqvar(object, plots)
 
+  } else if(c2 == "TMB"){
+
+    summary_TMB(object)
+
   }
 }
 
