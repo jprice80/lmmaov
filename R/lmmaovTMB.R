@@ -231,7 +231,7 @@ nlme_aov <- function(model = model, type = type, form_qr_ready, noint){
 
   aod <- data.frame(numDF = nDF, denDF = dDF, Fvalue = round(Fval, 2), pvalue = round(Pval, 4))
   row.names(aod) <- fixed$terms
-  class(aod) <- c("bdf", "nlme", "data.frame")
+  #class(aod) <- c("bdf", "nlme", "data.frame")
   y_name<- names(model$modelInfo$respCol)
 
   if (type == 3 || type == "III") {
