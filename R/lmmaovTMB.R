@@ -26,9 +26,9 @@
 #' @examples
 #' data(heart)
 #' heart<-allFactors(heart, vars=c("drug","time","patient"))
-#' (m1<-lmmaovTMB(data=heart, fixed=HR~drug*time+basehr, random=~patient:drug, repeated="time", units="patient", rcov="ar1"))
+#' (m1<-lmmaovTMB(data=heart, fixed=HR~drug*time, random=~patient:drug, repeated="time", units="patient", rcov="ar1"))
 
-lmmaovTMB<-function(data, fixed, random, repeated=NULL, units=NULL, rcov="vc", type=3, REML=TRUE, control = glmmTMBControl(optimizer=optim, optArgs=list(method="BFGS"))){
+lmmaovTMB<-function(data, fixed, random, repeated=NULL, units=NULL, rcov="vc", type=3, REML=TRUE){
 
   # if(control==1){
   #   control<-glmmTMBControl(optimizer=optim, optArgs=list(method="BFGS"))
@@ -60,9 +60,9 @@ lmmaovTMB<-function(data, fixed, random, repeated=NULL, units=NULL, rcov="vc", t
   #ANOVA calc
 
   if(rcov=="vc"){
-    m1<-glmmTMB::glmmTMB(formula=full_form, dispformula = ~ 1, data=data, REML=REML, control = control)
+    m1<-glmmTMB::glmmTMB(formula=full_form, dispformula = ~ 1, data=data, REML=REML)
   } else {
-    m1<-glmmTMB::glmmTMB(formula=full_form, dispformula = ~ 0, data=data, REML=REML, control = control)
+    m1<-glmmTMB::glmmTMB(formula=full_form, dispformula = ~ 0, data=data, REML=REML)
   }
 
   options(contrasts=c("contr.treatment", "contr.poly"))
@@ -71,9 +71,9 @@ lmmaovTMB<-function(data, fixed, random, repeated=NULL, units=NULL, rcov="vc", t
   #Replace correctly specify noint formula for summary table computation
   if(noint == TRUE){
     if(rcov=="vc"){
-      m2<-glmmTMB::glmmTMB(formula=noint_full_form, dispformula = ~ 1, data=data, REML=REML, control = control)
+      m2<-glmmTMB::glmmTMB(formula=noint_full_form, dispformula = ~ 1, data=data, REML=REML)
     } else {
-      m2<-glmmTMB::glmmTMB(formula=noint_full_form, dispformula = ~ 0, data=data, REML=REML, control = control)
+      m2<-glmmTMB::glmmTMB(formula=noint_full_form, dispformula = ~ 0, data=data, REML=REML)
     }
 
   } else {
@@ -144,7 +144,7 @@ formula_writer<-function(data, fixed, random, repeated=NULL, units=NULL, rcov=NU
     form_no_repeated<-full_form
     form_qr_ready<-as.formula(paste0(Y, "~",fixedform, "+", paste(indivterms, collapse='+')))
 
-  } else if (rcov %in% c("us", "cs", "ar1", "diag", "ou", "exp", "gau", "mat", "toep") & !is.null(repeated)){
+  } else if (rcov %in% c("us", "cs", "ar1", "diag", "ou", "exp", "gau", "mat", "toep", "rr", "homdiag") & !is.null(repeated)){
 
     randtrms[length(randtrms)+1]<-paste0(rcov,"(",repeated,"+0|", units, ")")
     randomform2<-paste(randtrms, collapse = "+")
@@ -425,6 +425,4 @@ summary_TMB <- function(object){
 # data(heart)
 # heart<-allFactors(heart, vars=c("drug","time","patient"))
 # (m1<-lmmaovTMB(data=heart, fixed=HR~drug*time+basehr, random=~patient:drug, repeated="time", units="patient", rcov="ar1"))
-#
-# glmmCtrl<-glmmTMBControl(optimizer=optim, optArgs=list(method="BFGS"))
 
