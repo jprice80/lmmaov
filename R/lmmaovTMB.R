@@ -407,13 +407,6 @@ summary_TMB <- function(object){
   print(object[["Parameter estimates"]])
 }
 
-
-
-
-
-
-
-
 # glmmCtrl<-glmmTMBControl(
 #   optCtrl = list(iter.max = 100000,
 #                  eval.max = 100000,
